@@ -1,0 +1,5 @@
+speed 30
+takeoff
+down 50
+forward 300
+land
