@@ -36,7 +36,7 @@ class LineTrace():
         cv2.createTrackbar("H_max", "OpenCV Window", 90, 179, self.__change_hsv)     # Hueの最大値は179
         cv2.createTrackbar("S_min", "OpenCV Window", 128, 255, self.__change_hsv)
         cv2.createTrackbar("S_max", "OpenCV Window", 255, 255, self.__change_hsv)
-        cv2.createTrackbar("V_min", "OpenCV Window", 128, 255, self.__change_hsv)
+        cv2.createTrackbar("V_min", "OpenCV Window", 50, 255, self.__change_hsv)
         cv2.createTrackbar("V_max", "OpenCV Window", 255, 255, self.__change_hsv)
 
         # rcコマンドの初期値
