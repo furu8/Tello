@@ -5,7 +5,7 @@ from LineTrace import LineTrace
 from datetime import datetime
 from threading import Thread
 import sys
-import termios
+# import termios # macでしか使えない
 import time
 import cv2
 
@@ -30,18 +30,22 @@ class Drone:
         # 強制着陸フラグ
         self.isforceland = False
 
+        # すべての動作終了フラグ
+        self.ismotion = False
+
     # オート飛行動作用スレッド
     def start_auto_move_thread(self):
         self.auto_move_thread = Thread(target=self.auto_move)
         self.auto_move_thread.daemon = True
         self.auto_move_thread.start()
 
-    # オート飛行動作用スレッド
+    # マニュアル飛行動作用スレッド
     def start_manual_move_thread(self):
         self.manual_move_thread = Thread(target=self.manual_move)
         self.manual_move_thread.daemon = True
         self.manual_move_thread.start()
 
+    # ライントレース飛行動作用スレッド
     def start_linetrace_move(self):
         print('linetrace')
         linetrace = LineTrace(self, self.tello, self.frame_read)
@@ -60,7 +64,7 @@ class Drone:
                 cv2.imshow('frame', frame)
             if key == ord('l'):
                 self.isforceland = True
-            if key == 27:
+            if key == 27 or self.ismotion: 
                 break
 
         cv2.destroyWindow('frame')
@@ -86,6 +90,9 @@ class Drone:
             except:
                 # 例外はtakeoff、landなどがある
                 self.separate_flight_command(cmd, _, 0, 0)
+
+        time.sleep(2) # 少し待って動作を終了したいため
+        self.ismotion = True
     
     # コマンドからいつでも強制着陸
     def forced_land_command(self):
@@ -140,7 +147,9 @@ class Drone:
 
     def get_key(self):
         """
-        CUI上の入力であることに注意
+        注意
+            CUI上の入力であること
+            Macでしか使えない
         """
         # 標準入力のファイルディスクリプタを取得
         fd = sys.stdin.fileno()

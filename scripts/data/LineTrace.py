@@ -4,7 +4,6 @@ from threading import Thread
 import numpy as np
 import cv2
 import time
-import sys
 from decimal import Decimal, ROUND_HALF_UP
 
 class LineTrace():
@@ -99,7 +98,7 @@ class LineTrace():
             key = cv2.waitKey(1)
             if key == ord('l'):
                 self.isforceland = True
-            if key == 27 or self.ismotion: 
+            if key == 27 or self.ismotion:
                 break
 
             # トラックバーの値を取る

@@ -31,7 +31,7 @@ class Sensor:
         """
         filename : 現在時刻
         """
-        path = '../../../data/raw/'+ filename + '.csv'
+        path = '../../data/raw/'+ filename + '.csv'
         flag = True
         
         while True:

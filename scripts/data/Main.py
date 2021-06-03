@@ -1,8 +1,5 @@
 from Drone import Drone
 from djitellopy import Tello
-import cv2
-import numpy as np
-import time
 
 def move_default(tello, frame_read):
     print('move')

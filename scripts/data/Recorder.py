@@ -1,6 +1,5 @@
 from djitellopy import Tello
 from threading import Thread
-from datetime import datetime
 import time
 import cv2
 
@@ -21,7 +20,7 @@ class Recorder:
         """
         filename : 現在時刻
         """
-        path = '../../../video/' + filename + '.avi'
+        path = '../../video/' + filename + '.avi'
         FPS = 30
 
         height, width, _ = self.frame_read.frame.shape
@@ -29,7 +28,7 @@ class Recorder:
 
         while True:
             video.write(self.frame_read.frame)
-            time.sleep(1 / 30)
+            time.sleep(1 / FPS)
 
         # 書き込み完了して閉じる
         video.release()
