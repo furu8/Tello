@@ -34,13 +34,14 @@
     ```
 
 4. [2]などを参考に、ターミナルで`conda create -n tello python=3.7.9`として、Tello用の仮想環境を構築する
-5. `pip install -r requirements.txt`を実行し、必要なライブラリ等を入れる
-6. 以上でTello飛行用環境は準備完了
+5. `conda activate tello`で仮想環境に入る
+6. `pip install -r requirements.txt`を実行し、必要なライブラリ等を入れる
+7. 以上でTello飛行用環境は準備完了
 
     ```
     (tello) C:\Users\furuhama\OneDrive\document\Research\ADforDrone>
     ```
-7. なお、仮想環境を抜けるには`concda deactivate`で良い
+8. なお、仮想環境を抜けるには`concda deactivate`で良い
 
 ## 実行方法
 
